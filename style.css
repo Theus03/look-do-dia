@@ -9,6 +9,7 @@ body {
 
 header {
   margin-bottom: 20px;
+  margin-top: 4rem;
 }
 
 video {
@@ -28,7 +29,8 @@ video {
   box-shadow: 0 4px 10px rgba(0,0,0,0.1);
   transition: all 0.3s ease-in-out;
   max-width: 420px;
-  width: 100%;
+  width: 80%;
+  margin-bottom: 5rem;
 }
 
 #preview-container p {
@@ -74,6 +76,7 @@ button:hover {
   gap: 20px;
   justify-content: center;
   padding: 20px;
+  margin-bottom: 5rem;
 }
 
 .look-card {
@@ -107,7 +110,7 @@ button:hover {
   bottom: 0;
   left: 0;
   right: 0;
-  height: 70px;
+  height: 100px;
   background-color: #9B51E0;
   display: flex;
   justify-content: space-around;
@@ -120,6 +123,7 @@ button:hover {
   color: white;
   font-size: 14px;
   text-decoration: none;
+  width: 20%;
   text-align: center;
   font-weight: bold;
 }
@@ -134,4 +138,21 @@ button:hover {
   color: white;
   font-weight: bold;
   text-align: center;
+}
+
+.look-card .remover {
+  display: inline-block;
+  margin-top: 10px;
+  padding: 4px 10px;
+  font-size: 13px;
+  background-color: #e53935;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.look-card .remover:hover {
+  background-color: #c62828;
 }

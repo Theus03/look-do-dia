@@ -8,6 +8,7 @@ document.getElementById('btnCapturar').addEventListener('click', async () => {
   const mensagem = document.getElementById('mensagem');
   const imagem = capturarFoto();
 
+  preview.style.width = "80%";
   preview.src = imagem;
 
   try {

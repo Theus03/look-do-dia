@@ -26,14 +26,37 @@ function carregarLooks() {
         data.className = "data";
         data.textContent = new Date(look.data).toLocaleString("pt-BR");
 
+        const btn = document.createElement("button");
+        btn.className = "remover";
+        btn.textContent = "Remover";
+        btn.addEventListener("click", () => removerLook(result.key));
+
+
         card.appendChild(img);
         card.appendChild(data);
+        card.appendChild(btn);
         galeria.appendChild(card);
 
         result.continue();
       } else if (!galeria.children.length) {
         galeria.innerHTML = "<p>Nenhum look salvo ainda 😢</p>";
       }
+    };
+  };
+}
+
+function removerLook(id) {
+  const req = indexedDB.open("LookDB", 1);
+
+  req.onsuccess = (e) => {
+    const db = e.target.result;
+    const tx = db.transaction("looks", "readwrite");
+    const store = tx.objectStore("looks");
+
+    const deleteRequest = store.delete(id);
+    deleteRequest.onsuccess = () => {
+      alert("Look removido com sucesso!");
+      carregarLooks(); // recarrega a galeria
     };
   };
 }
