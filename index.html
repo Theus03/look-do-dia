@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Look do Dia</title>
+  <link rel="manifest" href="/manifest.json" />
+  <link rel="stylesheet" href="/style.css" />
+</head>
+<body>
+  <nav class="menu-fixo">
+    <a href="/" class="botao-menu">➕<br>Look</a>
+    
+    <div class="logo-menu">LookDoDia</div>
+    
+    <a href="/looks.html" class="botao-menu">👗<br>Galeria</a>
+  </nav>
+  
+  <header>
+    <h1>👗 Look do Dia</h1>
+  </header>
+
+  <main>
+    <video id="video" autoplay playsinline></video>
+    <canvas id="canvas" style="display: none;"></canvas>
+
+    <button id="btnCapturar">📸 Tirar Foto</button>
+
+    <div id="preview-container">
+      <p>Prévia do look</p>
+      <img id="preview" alt="Prévia do look" />
+    </div>
+
+    <div id="mensagem"></div>
+  </main>
+
+
+
+  <script type="module" src="/src/main.js"></script>
+</body>
+</html>
