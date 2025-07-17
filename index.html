@@ -12,6 +12,83 @@
 <link href="https://cdn.jsdelivr.net/npm/daisyui@5/themes.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
+    <div class="navbar bg-base-100 shadow-sm">
+      <div class="navbar-start">
+        <div class="dropdown">
+          <div tabindex="0" role="button" class="btn btn-ghost btn-circle">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"> <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h7" /> </svg>
+          </div>
+          <ul
+            tabindex="0"
+            class="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow">
+            <li><a href="looks.html">Galeria</a></li>
+            <li><a href="configuracao.html">Configuração</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="navbar-center">
+        <img src="./public/LookDoDia.png" width="150">
+      </div>
+      <div class="navbar-end">
+        <button class="btn btn-ghost btn-circle">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"> <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" /> </svg>
+        </button>
+        <button class="btn btn-ghost btn-circle">
+          <div class="indicator">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"> <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9" /> </svg>
+            <span class="badge badge-xs badge-primary indicator-item"></span>
+          </div>
+        </button>
+      </div>
+    </div>
+    
+    
+    <main class="p-4">
+      <div class="breadcrumbs text-sm">
+        <ul>
+          <li><a></a></li>
+          <li>Novo Look</li>
+        </ul>
+      </div>
+
+      <div class="card lg:card-side bg-base-100 shadow-sm flex flex-col items-center justify-center">
+        <figure>
+          <video id="video" autoplay playsinline></video>
+        </figure>
+        <div class="card-body">
+          <h2 class="card-title">Tire uma foto</h2>
+          <p>Clique no botão "Tirar Foto" abaixo para tirar a foto do seu look. Se preferir pode trocar a câmera também, alternando entre frontal e traseira.</p>
+          <div class="card-actions justify-between pt-2">
+            <button class="btn">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-rotate-ccw-icon lucide-rotate-ccw"><path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"/><path d="M3 3v5h5"/></svg>
+              Trocar Câmera
+            </button>
+            <button class="btn btn-primary" id="btnCapturar">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-camera-icon lucide-camera"><path d="M14.5 4h-5L7 7H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-3l-2.5-3z"/><circle cx="12" cy="13" r="3"/></svg>
+              Tirar Foto
+            </button>
+          </div>
+        </div>
+      </div>
+
+      
+      <div class="card lg:card-side bg-base-100 shadow-sm flex flex-col items-center justify-center mb-16">
+        <div class="skeleton w-100 p-6"></div>
+        <img id="preview" alt="Prévia do look" src="./public/file-image-fill.png" class="mt-8 w-32"/>
+        <canvas id="canvas" style="display: none;"></canvas>  
+        <div class="card-body">
+          <h2 class="card-title">Prévia do seu Look</h2>
+          <div class="card-actions justify-center pt-2">
+            <button class="btn btn-primary">
+              <svg class="size-[1.2em]" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-images-icon lucide-images"><path d="M18 22H4a2 2 0 0 1-2-2V6"/><path d="m22 13-1.296-1.296a2.41 2.41 0 0 0-3.408 0L11 18"/><circle cx="12" cy="8" r="2"/><rect width="16" height="16" x="6" y="2" rx="2"/></svg>
+              Ir para Galeria
+            </button>
+          </div>
+        </div>
+      </div>
+      <div id="mensagem"></div>
+    </main>
+
     <div class="dock bg-primary text-neutral-content">
         <a href="index.html" class="cursor-pointer dock-active">
           <svg class="size-[1.2em]" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-image-plus-icon lucide-image-plus"><path d="M16 5h6"/><path d="M19 2v6"/><path d="M21 11.5V19a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h7.5"/><path d="m21 15-3.086-3.086a2 2 0 0 0-2.828 0L6 21"/><circle cx="9" cy="9" r="2"/></svg>
@@ -28,19 +105,6 @@
       </a>
     </div>
 
-  <main>
-    <video id="video" autoplay playsinline></video>
-    <canvas id="canvas" style="display: none;"></canvas>
-
-    <button id="btnCapturar">📸 Tirar Foto</button>
-
-    <div id="preview-container">
-      <p>Prévia do look</p>
-      <img id="preview" alt="Prévia do look" src="./public/file-image-fill.png" style="width: 90px;"/>
-    </div>
-
-    <div id="mensagem"></div>
-  </main>
 
 <link href="https://cdn.jsdelivr.net/npm/daisyui@5" rel="stylesheet" type="text/css" />
 <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
