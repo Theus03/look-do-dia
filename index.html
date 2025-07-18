@@ -12,6 +12,15 @@
 <link href="https://cdn.jsdelivr.net/npm/daisyui@5/themes.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
+  
+  <div role="alert" class="alert alert-success alert-soft" style="display: none;">
+    <span>Look Salvo com Sucesso!</span>
+  </div>
+
+  <div role="alert" class="alert alert-error alert-soft" style="display: none;">
+  <span>Problemas ao tentar salvar o look.</span>
+</div>
+
     <div class="navbar bg-base-100 shadow-sm">
       <div class="navbar-start">
         <div class="dropdown">
@@ -70,10 +79,7 @@
           </div>
         </div>
       </div>
-
-      
-      <div class="card lg:card-side bg-base-100 shadow-sm flex flex-col items-center justify-center mb-16">
-        <div class="skeleton w-100 p-6"></div>
+      <div class="mt-8 card lg:card-side bg-base-100 shadow-sm flex flex-col items-center justify-center mb-16">
         <img id="preview" alt="Prévia do look" src="./public/file-image-fill.png" class="mt-8 w-32"/>
         <canvas id="canvas" style="display: none;"></canvas>  
         <div class="card-body">
