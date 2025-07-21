@@ -56,7 +56,7 @@ function removerLook(id) {
     const deleteRequest = store.delete(id);
     deleteRequest.onsuccess = () => {
       alert("Look removido com sucesso!");
-      carregarLooks(); // recarrega a galeria
+      carregarLooks();
     };
   };
 }
