@@ -5,7 +5,8 @@ iniciarCamera();
 
 document.getElementById('btnCapturar').addEventListener('click', async () => {
   const preview = document.getElementById('preview');
-  const mensagem = document.getElementById('mensagem');
+  const alertSuccess = document.getElementById('alertSuccess');
+  const alertDanger = document.getElementById('alertSuccess');
   const imagem = capturarFoto();
 
   preview.style.width = "80%";
@@ -13,10 +14,10 @@ document.getElementById('btnCapturar').addEventListener('click', async () => {
 
   try {
     await salvarLook(imagem);
-    mensagem.textContent = "Look salvo com sucesso!";
-    setTimeout(() => mensagem.textContent = "", 3000);
+    alertSuccess.style.display = 'flex';
+    setTimeout(() => alertSuccess.style.display = 'none', 3000);
   } catch (err) {
-    mensagem.textContent = "Erro ao salvar o look!";
-    mensagem.style.color = "red";
+    alertDanger.style.display = 'flex';
+    setTimeout(() => alertDanger.style.display = 'none', 3000);
   }
 });
