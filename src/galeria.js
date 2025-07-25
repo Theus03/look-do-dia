@@ -43,9 +43,9 @@ function carregarLooks() {
             <figure>
               <img src="${look.imagem}" alt="Look Image" />
             </figure>
-            <span class="card-title p-2">Image.jpg</span>
+            <span class="card-title p-2">${look.name}</span>
             <div class="p-2 pb-6 flex gap-1 w-48">
-              <button class="btn btn-xs btn-soft btn-info p-4 w-12" title="Editar">
+              <button class="btn btn-xs btn-soft btn-info p-4 w-12" title="Editar" onClick="renameLook(${look.id}, 'Image')">
                 <!-- SVG do lápis -->
                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" stroke="#3b85fc" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21.174 6.812a1 1 0 0 0-3.986-3.987L3.842 16.174a2 2 0 0 0-.5.83l-1.321 4.352a.5.5 0 0 0 .623.622l4.353-1.32a2 2 0 0 0 .83-.497z"/><path d="m15 5 4 4"/></svg>
               </button>
@@ -76,6 +76,12 @@ function carregarLooks() {
       }
     };
   };
+}
+
+window.renameLook = function(id, oldName) {
+  console.log(id, oldName);
+  let modal = document.getElementById("renameModal");
+  modal.showModal();
 }
 
 window.removerLook = function(id) {

@@ -13,6 +13,7 @@ export function salvarLook(base64Image) {
       const store = tx.objectStore("looks");
 
       const look = {
+        name: "Image.jpg",
         imagem: base64Image,
         data: new Date().toISOString()
       };
