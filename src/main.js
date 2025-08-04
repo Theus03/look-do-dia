@@ -15,6 +15,11 @@ document.getElementById('btnCapturar').addEventListener('click', async () => {
   try {
     await salvarLook(imagem);
     alertSuccess.style.display = 'flex';
+    window.scrollTo({
+      top: document.body.scrollHeight,
+      behavior: 'smooth'
+    });
+
     setTimeout(() => alertSuccess.style.display = 'none', 3000);
   } catch (err) {
     alertDanger.style.display = 'flex';
