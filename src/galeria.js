@@ -1,3 +1,4 @@
+import { novaPasta } from './db.js';
 
 function carregarLooks() {
   const galeria = document.getElementById("galeria");
@@ -86,20 +87,36 @@ window.folderLook = function(id, oldName) {
   let containerFolder = document.getElementById("container-folder");
 
   let folder = `<div class="folder">
-            <input type="checkbox" class="checkbox checkbox-warning" />
+            <input type="radio" name="radio-8" class="radio radio-warning" />
             <span class="nameFolder" contenteditable="true">Nova Pasta</span>
         </div>`
 
   modal.showModal();
 
-btnAddFolderLook.onclick = () => {
-  containerFolder.innerHTML += folder;
-  let els = document.querySelectorAll(".nameFolder");
-  let el = els[els.length - 1];
-  el.focus();
-  document.getSelection().collapse(el, 1);
-};
-  btnSalvarFolderLook.onclick = () =>  console.log("opa");
+  let el = null;
+
+  btnAddFolderLook.onclick = async () => {
+    containerFolder.innerHTML += folder;
+    let els = document.querySelectorAll(".nameFolder");
+    el = els[els.length - 1];
+    el.focus();
+    document.getSelection().collapse(el, 1);
+    await novaPasta()
+  };
+
+  btnSalvarFolderLook.onclick = () => {
+    const selectedRadio = document.querySelector('.folder input[type="radio"]:checked');
+
+    if (selectedRadio) {
+      const folderDiv = selectedRadio.closest('.folder');
+      const folderName = folderDiv.querySelector('.nameFolder').textContent.trim();
+
+      atualizarLook(id, oldName, folderName);
+    } else {
+      console.warn('Nenhuma pasta selecionada.');
+    }
+  };
+
 }
 
 window.renameLook = function(id, oldName) {
@@ -141,7 +158,7 @@ window.removerLook = function(id) {
   };
 }
 
-window.atualizarLook = function(id, newName) {
+window.atualizarLook = function(id, newName = "", folder = "") {
   const req = indexedDB.open("LookDB", 1);
 
   req.onerror = (event) => {
@@ -164,6 +181,7 @@ window.atualizarLook = function(id, newName) {
       }
 
       data.name = newName;
+      data.folder = folder;
 
       const updateRequest = store.put(data);
 
