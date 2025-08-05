@@ -54,7 +54,7 @@ function carregarLooks() {
                 <!-- SVG do lápis -->
                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" stroke="#3b85fc" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21.174 6.812a1 1 0 0 0-3.986-3.987L3.842 16.174a2 2 0 0 0-.5.83l-1.321 4.352a.5.5 0 0 0 .623.622l4.353-1.32a2 2 0 0 0 .83-.497z"/><path d="m15 5 4 4"/></svg>
               </button>
-              <button class="btn btn-xs btn-soft btn-warning p-4 w-12" title="Adicionar" onClick="folderLook(${look.id}, '${look.name}')">
+              <button class="btn btn-xs btn-soft btn-warning p-4 w-12" title="Adicionar" onClick="folderLook(${look.id}, '${look.name}', '${look.folder}')">
                 <!-- SVG da pasta com + -->
                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" stroke="#fec158" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 10v6"/><path d="M9 13h6"/><path d="M20 20a2 2 0 0 0 2-2V8a2 2 0 0 0-2-2h-7.9a2 2 0 0 1-1.69-.9L9.6 3.9A2 2 0 0 0 7.93 3H4a2 2 0 0 0-2 2v13a2 2 0 0 0 2 2Z"/></svg>
               </button>
@@ -83,15 +83,15 @@ function carregarLooks() {
   };
 }
 
-window.folderLook = function(id, oldName) {
+window.folderLook = async function(id, oldName, folderName) {
   let modal = document.getElementById("folderModal");
   let btnSalvarFolderLook = document.getElementById("btnSalvarFolderLook");
   let btnAddFolderLook = document.getElementById("btnAddFolderLook");
   let containerFolder = document.getElementById("container-folder");
 
   let folder = `<div class="folder">
-            <input type="radio" name="radio-8" class="radio radio-warning" />
-            <span class="nameFolder" contenteditable="true">Nova Pasta</span>
+            <input type="radio" name="radio-8" class="radio radio-warning" checked="${folderName == "" ? `false` : `true`}" />
+            <span class="nameFolder" contenteditable="true">${folderName == "" ? `` : folderName}</span>
         </div>`
 
   modal.showModal();
