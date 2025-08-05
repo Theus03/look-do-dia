@@ -47,7 +47,7 @@ function carregarLooks() {
             </figure>
             <span class="card-title p-2">${look.name}</span>
             ${
-              look.folder != "" ? `<div class="badge badge-soft badge-warning m-2">${look.folder}</div>` : ``
+              (look.folder != "" && look.folder != undefined) ? `<div class="badge badge-soft badge-warning m-2">${look.folder}</div>` : ``
             }
             <div class="p-2 pb-6 flex gap-1 w-48">
               <button class="btn btn-xs btn-soft btn-info p-4 w-12" title="Editar" onClick="renameLook(${look.id}, '${look.name}')">
